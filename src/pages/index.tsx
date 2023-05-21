@@ -12,7 +12,7 @@ const router = createBrowserRouter([
     children: [
       { path: RoutePath.main, element: <Main /> },
       { path: RoutePath.about, element: <About /> },
-      { path: RoutePath.user, element: <User /> },
+      { path: `${RoutePath.user}/:userId`, element: <User /> },
       { path: RoutePath.notFound, element: <NotFound /> },
     ],
   },
