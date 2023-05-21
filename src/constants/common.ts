@@ -1,8 +1,15 @@
+const API_URL = 'https://jsonplaceholder.typicode.com';
+
 enum RoutePath {
   main = '/',
   about = '/about',
-  user = '/user/:userId',
+  user = '/user',
   notFound = '*',
 }
 
-export { RoutePath };
+enum ApiPath {
+  posts = '/posts',
+  comments = '/comments',
+}
+
+export { API_URL, RoutePath, ApiPath };
