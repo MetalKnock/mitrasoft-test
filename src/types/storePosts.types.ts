@@ -7,25 +7,33 @@ interface PostsState {
   error: string | null;
 }
 
-interface GetPostsAction {
-  type: PostsActionTypes.GET_POSTS;
+interface FetchPostsRequestAction {
+  type: PostsActionTypes.FETCH_POSTS_REQUEST;
 }
 
-interface SetPostsAction {
-  type: PostsActionTypes.SET_POSTS;
+interface FetchPostsSuccessAction {
+  type: PostsActionTypes.FETCH_POSTS_SUCCESS;
   payload: Posts;
 }
 
-interface SetLoadingPostsAction {
-  type: PostsActionTypes.SET_LOADING_POSTS;
-  payload: boolean;
-}
-
-interface SetErrorPostsAction {
-  type: PostsActionTypes.SET_ERROR_POSTS;
+interface FetchPostsRejectedAction {
+  type: PostsActionTypes.FETCH_POSTS_REJECTED;
   payload: string;
 }
 
-type PostsAction = GetPostsAction | SetPostsAction | SetLoadingPostsAction | SetErrorPostsAction;
+type PostsAction = FetchPostsRequestAction | FetchPostsSuccessAction | FetchPostsRejectedAction;
 
-export type { PostsState, PostsAction };
+type FetchPostsRequest = () => FetchPostsRequestAction;
+type FetchPostsSuccess = (payload: Posts) => FetchPostsSuccessAction;
+type FetchPostsRejected = (payload: string) => FetchPostsRejectedAction;
+
+export type {
+  PostsState,
+  FetchPostsRequestAction,
+  FetchPostsSuccessAction,
+  FetchPostsRejectedAction,
+  PostsAction,
+  FetchPostsRequest,
+  FetchPostsSuccess,
+  FetchPostsRejected,
+};

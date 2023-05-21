@@ -1,23 +1,22 @@
 import { PostsActionTypes } from 'src/constants/store';
-import { Posts } from 'src/types/common.types';
+import {
+  FetchPostsRejected,
+  FetchPostsRequest,
+  FetchPostsSuccess,
+} from 'src/types/storePosts.types';
 
-const getPosts = () => ({
-  type: PostsActionTypes.GET_POSTS,
+const fetchPostsRequest: FetchPostsRequest = () => ({
+  type: PostsActionTypes.FETCH_POSTS_REQUEST,
 });
 
-const setPosts = (payload: Posts) => ({
-  type: PostsActionTypes.SET_POSTS,
+const fetchPostsSuccess: FetchPostsSuccess = (payload) => ({
+  type: PostsActionTypes.FETCH_POSTS_SUCCESS,
   payload,
 });
 
-const setLoadingPosts = (payload: boolean) => ({
-  type: PostsActionTypes.SET_LOADING_POSTS,
+const fetchPostsRejected: FetchPostsRejected = (payload) => ({
+  type: PostsActionTypes.FETCH_POSTS_REJECTED,
   payload,
 });
 
-const setErrorPosts = (payload: string) => ({
-  type: PostsActionTypes.SET_ERROR_POSTS,
-  payload,
-});
-
-export { getPosts, setPosts, setLoadingPosts, setErrorPosts };
+export { fetchPostsRequest, fetchPostsSuccess, fetchPostsRejected };
