@@ -17,7 +17,7 @@ interface PostProps {
 export default function PostItem({ post }: PostProps) {
   const { userId, body, title, id } = post;
 
-  const { comments, loading } = useAppSelector((store) => store.comments);
+  const { comments, isLoadingPostIds } = useAppSelector((store) => store.comments);
   const dispatch = useDispatch();
 
   const handleGetComments = async () => {
@@ -45,7 +45,7 @@ export default function PostItem({ post }: PostProps) {
         <Card.Footer>
           <Accordion>
             <CustomToggle eventKey={String(id)} callback={handleGetComments}>
-              {loading && currentPostComments.length === 0 ? (
+              {isLoadingPostIds.find((isLoadingPostId) => isLoadingPostId === id) ? (
                 <Stack direction='horizontal' gap={2}>
                   <Spinner as='span' size='sm' />
                   <span>Loading...</span>
@@ -55,11 +55,6 @@ export default function PostItem({ post }: PostProps) {
               )}
             </CustomToggle>
             <Accordion.Collapse eventKey={String(id)}>
-              {/* {loading && currentPostComments.length === 0 ? (
-                <Spinner />
-              ) : (
-                <CommentList comments={currentPostComments} />
-              )} */}
               <CommentList comments={currentPostComments} />
             </Accordion.Collapse>
           </Accordion>

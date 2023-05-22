@@ -10,13 +10,15 @@ const fetchCommentsRequest: FetchCommentsRequest = (postId) => ({
   postId,
 });
 
-const fetchCommentsSuccess: FetchCommentsSuccess = (payload) => ({
+const fetchCommentsSuccess: FetchCommentsSuccess = (postId, payload) => ({
   type: CommentsActionTypes.FETCH_COMMENTS_SUCCESS,
+  postId,
   payload,
 });
 
-const fetchCommentsRejected: FetchCommentsRejected = (payload) => ({
+const fetchCommentsRejected: FetchCommentsRejected = (postId, payload) => ({
   type: CommentsActionTypes.FETCH_COMMENTS_REJECTED,
+  postId,
   payload,
 });
 

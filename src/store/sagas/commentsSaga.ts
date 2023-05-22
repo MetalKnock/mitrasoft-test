@@ -9,11 +9,11 @@ function* handleComments(postId: number) {
   try {
     const data: Comments = yield call(getCommentsForPost, [`postId=${postId}`]);
     yield delay(500);
-    yield put(fetchCommentsSuccess(data));
+    yield put(fetchCommentsSuccess(postId, data));
   } catch (error) {
     if (error instanceof Error) {
       const { message } = error;
-      yield put(fetchCommentsRejected(message));
+      yield put(fetchCommentsRejected(postId, message));
     }
   }
 }

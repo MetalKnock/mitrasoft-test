@@ -3,7 +3,7 @@ import { Comments } from './common.types';
 
 interface CommentsState {
   comments: Comments;
-  loading: boolean;
+  isLoadingPostIds: number[];
   error: string | null;
 }
 
@@ -14,11 +14,13 @@ interface FetchCommentsRequestAction {
 
 interface FetchCommentsSuccessAction {
   type: CommentsActionTypes.FETCH_COMMENTS_SUCCESS;
+  postId: number;
   payload: Comments;
 }
 
 interface FetchCommentsRejectedAction {
   type: CommentsActionTypes.FETCH_COMMENTS_REJECTED;
+  postId: number;
   payload: string;
 }
 
@@ -28,8 +30,8 @@ type CommentsAction =
   | FetchCommentsRejectedAction;
 
 type FetchCommentsRequest = (postId: number) => FetchCommentsRequestAction;
-type FetchCommentsSuccess = (payload: Comments) => FetchCommentsSuccessAction;
-type FetchCommentsRejected = (payload: string) => FetchCommentsRejectedAction;
+type FetchCommentsSuccess = (postId: number, payload: Comments) => FetchCommentsSuccessAction;
+type FetchCommentsRejected = (postId: number, payload: string) => FetchCommentsRejectedAction;
 
 export type {
   CommentsState,
