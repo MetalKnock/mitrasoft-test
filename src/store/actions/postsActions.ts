@@ -1,5 +1,8 @@
 import { PostsActionTypes } from 'src/constants/store';
 import {
+  FetchPostsCurrentUserRejected,
+  FetchPostsCurrentUserRequest,
+  FetchPostsCurrentUserSuccess,
   FetchPostsRejected,
   FetchPostsRequest,
   FetchPostsSuccess,
@@ -19,4 +22,26 @@ const fetchPostsRejected: FetchPostsRejected = (payload) => ({
   payload,
 });
 
-export { fetchPostsRequest, fetchPostsSuccess, fetchPostsRejected };
+const fetchPostsCurrentUserRequest: FetchPostsCurrentUserRequest = (userId) => ({
+  type: PostsActionTypes.FETCH_POSTS_CURRENT_USER_REQUEST,
+  userId,
+});
+
+const fetchPostsCurrentUserSuccess: FetchPostsCurrentUserSuccess = (payload) => ({
+  type: PostsActionTypes.FETCH_POSTS_CURRENT_USER_SUCCESS,
+  payload,
+});
+
+const fetchPostsCurrentUserRejected: FetchPostsCurrentUserRejected = (payload) => ({
+  type: PostsActionTypes.FETCH_POSTS_CURRENT_USER_REJECTED,
+  payload,
+});
+
+export {
+  fetchPostsRequest,
+  fetchPostsSuccess,
+  fetchPostsRejected,
+  fetchPostsCurrentUserRequest,
+  fetchPostsCurrentUserSuccess,
+  fetchPostsCurrentUserRejected,
+};
