@@ -30,21 +30,19 @@ export default function PostItem({ post }: PostProps) {
 
   return (
     <Col xs={12}>
-      <Card>
+      <Card className='my-3'>
         <Card.Header>
-          <Stack direction='horizontal' gap={3}>
-            <Link to={`${RoutePath.user}/${userId}`}>
-              <Image src={AvatarIcon} width={50} height={50} />
-            </Link>
-            <Card.Title>{title}</Card.Title>
-          </Stack>
+          <Link to={`${RoutePath.user}/${userId}`}>
+            <Image src={AvatarIcon} width={50} height={50} roundedCircle />
+          </Link>
         </Card.Header>
         <Card.Body>
+          <Card.Title>{title}</Card.Title>
           <Card.Text>{body}</Card.Text>
         </Card.Body>
         <Card.Footer>
           <Accordion>
-            <CustomToggle eventKey={String(id)} callback={handleGetComments}>
+            <CustomToggle className='mt-2 mb-2' eventKey={String(id)} callback={handleGetComments}>
               {isLoadingPostIds.find((isLoadingPostId) => isLoadingPostId === id) ? (
                 <Stack direction='horizontal' gap={2}>
                   <Spinner as='span' size='sm' />
