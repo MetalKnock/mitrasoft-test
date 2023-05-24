@@ -20,7 +20,7 @@ export default function Menu({ id, isOpen, handleClose }: MenuProps) {
           </Col>
           <Col className='d-flex flex-column justify-content-center '>
             <h6>{ABOUT_INFO[0].description}</h6>
-            <a href={`mailto:${ABOUT_INFO[2].description}`}>{ABOUT_INFO[2].description}</a>
+            <a href={`mailto:${ABOUT_INFO[3].description}`}>{ABOUT_INFO[3].description}</a>
           </Col>
         </Row>
       </Offcanvas.Header>
