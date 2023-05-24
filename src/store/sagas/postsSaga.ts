@@ -54,7 +54,7 @@ function* watchPostsCurrentUserSaga() {
 
 function* postsSaga() {
   yield takeEvery(PostsActionTypes.FETCH_POSTS_REQUEST, watchPostsSaga);
-  yield takeEvery(PostsActionTypes.FETCH_POSTS_CURRENT_USER_REQUEST, watchPostsCurrentUserSaga);
+  yield watchPostsCurrentUserSaga();
 }
 
 export { postsSaga };
