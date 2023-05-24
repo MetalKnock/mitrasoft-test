@@ -1,0 +1,14 @@
+.stackUser {
+  position: fixed;
+  max-width: 600px;
+}
+
+@media (max-width: 992px) {
+  .row {
+    flex-direction: column;
+  }
+  .stackUser {
+    position: static;
+    max-width: none;
+  }
+}

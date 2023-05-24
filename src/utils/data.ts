@@ -1,4 +1,4 @@
-import { Comments } from 'src/types/common.types';
+import { Comments, Posts } from 'src/types/common.types';
 
 const getFilteredCommentsByPostId = (comments: Comments, id: number) =>
   comments.filter((comment) => comment.postId === id);
@@ -6,4 +6,7 @@ const getFilteredCommentsByPostId = (comments: Comments, id: number) =>
 const findFirstCommentByPostId = (comments: Comments, id: number) =>
   comments.find((comment) => comment.postId === id);
 
-export { getFilteredCommentsByPostId, findFirstCommentByPostId };
+const filteredPostsByCurrentUser = (posts: Posts, id: number) =>
+  posts.filter((post) => post.userId === id);
+
+export { getFilteredCommentsByPostId, findFirstCommentByPostId, filteredPostsByCurrentUser };

@@ -4,17 +4,23 @@ import { Button, useAccordionButton } from 'react-bootstrap';
 interface CustomToggleProps {
   children: ReactNode;
   eventKey: string;
+  className?: string;
   callback?: () => void;
 }
 
-export default function CustomToggle({ children, eventKey, callback }: CustomToggleProps) {
+export default function CustomToggle({
+  children,
+  eventKey,
+  className,
+  callback,
+}: CustomToggleProps) {
   const decoratedOnClick = useAccordionButton(eventKey, callback);
 
   return (
-    <Button variant='primary' type='button' onClick={decoratedOnClick}>
+    <Button className={className} variant='primary' type='button' onClick={decoratedOnClick}>
       {children}
     </Button>
   );
 }
 
-CustomToggle.defaultProps = { callback: () => {} };
+CustomToggle.defaultProps = { className: '', callback: () => {} };

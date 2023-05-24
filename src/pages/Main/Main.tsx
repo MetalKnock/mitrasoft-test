@@ -10,11 +10,13 @@ export default function Main() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchPostsRequest());
-  }, [dispatch]);
+    if (posts.length === 0) {
+      dispatch(fetchPostsRequest());
+    }
+  }, [dispatch, posts]);
 
   return (
-    <Container>
+    <Container className='d-flex'>
       <PostList posts={posts} loading={loading} />
     </Container>
   );

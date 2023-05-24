@@ -8,4 +8,10 @@ const getAllPosts = async () => {
   return data;
 };
 
-export { getAllPosts };
+const getPostsForUser = async (query: string[]) => {
+  const response = await axios.get<Posts>(`${API_URL}${ApiPath.posts}?${query.join('&')}`);
+  const { data } = response;
+  return data;
+};
+
+export { getAllPosts, getPostsForUser };
