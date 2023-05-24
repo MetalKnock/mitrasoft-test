@@ -6,14 +6,14 @@ import { useAppSelector } from 'src/hooks/useAppSelector';
 import { fetchPostsRequest } from 'src/store/actions/postsActions';
 
 export default function Main() {
-  const { posts, loading } = useAppSelector((store) => store.posts);
+  const { posts, loading, error } = useAppSelector((store) => store.posts);
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (posts.length === 0) {
       dispatch(fetchPostsRequest());
     }
-  }, [dispatch, posts]);
+  }, [dispatch, posts.length]);
 
   useEffect(() => {
     window.scrollTo({
@@ -24,7 +24,7 @@ export default function Main() {
 
   return (
     <Container className='d-flex'>
-      <PostList posts={posts} loading={loading} />
+      <PostList posts={posts} loading={loading} error={error} />
     </Container>
   );
 }

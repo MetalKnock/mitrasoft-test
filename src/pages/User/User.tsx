@@ -15,7 +15,7 @@ import { filteredPostsByCurrentUser } from 'src/utils/data';
 import styles from './User.module.css';
 
 export default function User() {
-  const { posts, postsCurrentUser, loading } = useAppSelector((store) => store.posts);
+  const { posts, postsCurrentUser, loading, error } = useAppSelector((store) => store.posts);
   const { users } = useAppSelector((store) => store.users);
   const dispatch = useDispatch();
 
@@ -55,7 +55,7 @@ export default function User() {
           </Stack>
         </Col>
         <Col>
-          <PostList posts={postsCurrentUser} loading={loading} />
+          <PostList posts={postsCurrentUser} loading={loading} error={error} />
         </Col>
       </Row>
     </Container>
