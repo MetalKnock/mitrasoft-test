@@ -15,6 +15,13 @@ export default function Main() {
     }
   }, [dispatch, posts]);
 
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }, []);
+
   return (
     <Container className='d-flex'>
       <PostList posts={posts} loading={loading} />

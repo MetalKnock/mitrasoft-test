@@ -3,6 +3,7 @@ import { getAllPosts, getPostsForUser } from 'src/api/postsApi';
 import { Posts } from 'src/types/common.types';
 import { PostsActionTypes } from 'src/constants/store';
 import { FetchPostsCurrentUserRequestAction } from 'src/types/storePosts.types';
+import { toast } from 'react-toastify';
 import {
   fetchPostsSuccess,
   fetchPostsRejected,
@@ -19,6 +20,7 @@ function* handlePosts() {
     if (error instanceof Error) {
       const { message } = error;
       yield put(fetchPostsRejected(message));
+      toast(message);
     }
   }
 }
@@ -32,6 +34,7 @@ function* handlePostsCurrentUser(userId: number) {
     if (error instanceof Error) {
       const { message } = error;
       yield put(fetchPostsCurrentUserRejected(message));
+      toast(message);
     }
   }
 }
