@@ -3,6 +3,7 @@ import { getUser } from 'src/api/usersApi';
 import { User } from 'src/types/common.types';
 import { UsersActionTypes } from 'src/constants/store';
 import { FetchUsersRequestAction } from 'src/types/storeUsers.types';
+import { toast } from 'react-toastify';
 import { fetchUsersRejected, fetchUsersSuccess } from '../actions/usersActions';
 
 function* handleUser(id: number) {
@@ -14,6 +15,7 @@ function* handleUser(id: number) {
     if (error instanceof Error) {
       const { message } = error;
       yield put(fetchUsersRejected(message));
+      toast(message);
     }
   }
 }
