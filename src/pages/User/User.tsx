@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Button, Col, Container, ListGroup, Row, Stack } from 'react-bootstrap';
+import { Button, Col, Container, Row, Stack } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import { PostList } from 'src/components/PostList';
@@ -12,6 +12,7 @@ import {
 } from 'src/store/actions/postsActions';
 import { fetchUsersRequest } from 'src/store/actions/usersActions';
 import { filteredPostsByCurrentUser } from 'src/utils/data';
+import styles from './User.module.css';
 
 export default function User() {
   const { posts, postsCurrentUser, loading } = useAppSelector((store) => store.posts);
@@ -35,13 +36,20 @@ export default function User() {
     }
   }, [dispatch, posts, userIdNumber]);
 
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }, []);
+
   return (
     <Container>
-      <Row className='mt-3' direction='horizontal' gap={3}>
-        <Col className='position-relative'>
-          <Stack className='position-fixed mt-3 w-25 mh-50 justify-content-between' gap={3}>
+      <Row className={`${styles.row} mt-3`} gap={3}>
+        <Col className='position-relative d-flex'>
+          <Stack className={`${styles.stackUser} mt-3 w-25 mh-50 justify-content-between`} gap={3}>
             <UserCard />
-            <Link className='d-flex flex-grow-1' to={RoutePath.main}>
+            <Link className='d-flex flex-grow-1 flex-column' to={RoutePath.main}>
               <Button>Back</Button>
             </Link>
           </Stack>
